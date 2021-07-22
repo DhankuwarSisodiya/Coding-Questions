@@ -21,3 +21,19 @@ var uniqueOccurrences = function(arr) {
    })    
     return ans
 };
+
+//Solution 2
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+var uniqueOccurrences = function(arr) {
+    let checked = {};
+    for(let num of arr) {
+        if(!checked[num]) checked[num] = 1;
+        else checked[num]++;
+    }
+    let occurrences = Object.values(checked);
+    let unique = [...new Set(occurrences)];
+    return occurrences.length == unique.length ? true : false;
+};
